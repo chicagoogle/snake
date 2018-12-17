@@ -17,6 +17,10 @@ namespace Snake
             p2.Draw();
 
             Console.ReadLine();
+
+            HorisontalLine hr = new HorisontalLine(3,15,3,'.');
+            hr.Drow();
+
         }
     }
 }
