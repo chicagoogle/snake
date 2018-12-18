@@ -32,17 +32,19 @@ namespace Snake
 
 
             HorisontalLine top = new HorisontalLine(0, 78, 0, '.');
-            top.Drow();
-
             HorisontalLine bottom = new HorisontalLine(0, 78, 23, '.');
-            bottom.Drow();
-
             VerticalLine left = new VerticalLine(0, 23, 0, '.');
             VerticalLine right = new VerticalLine(0, 23, 78, '.');
-
-
+            top.Drow();
+            bottom.Drow();
             left.Drow();
             right.Drow();
+
+            Point snakeTail = new Point(10, 4, '*');
+
+            Snake snake = new Snake(snakeTail, 10, Direction.Right);
+            snake.Drow();
+
         }
     }
 }
