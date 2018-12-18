@@ -10,17 +10,39 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            Point p1 = new Point(1, 3, '*');
-            p1.Draw();
+            try
+            {
+                doWork();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
+            }
+        }
 
-            Point p2 = new Point(4, 5, '#');
-            p2.Draw();
+        static void doWork()
+        {
+            //Console.WriteLine(Console.LargestWindowHeight);
+            //Console.WriteLine(Console.LargestWindowWidth);
+            //Console.SetWindowPosition(50, 0);
+            //Console.SetBufferSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
+            Console.SetWindowSize(80, 25);
+            Console.SetBufferSize(80, 25);
 
-            Console.ReadLine();
 
-            HorisontalLine hr = new HorisontalLine(3,15,3,'.');
-            hr.Drow();
+            HorisontalLine top = new HorisontalLine(0, 78, 0, '.');
+            top.Drow();
 
+            HorisontalLine bottom = new HorisontalLine(0, 78, 23, '.');
+            bottom.Drow();
+
+            VerticalLine left = new VerticalLine(0, 23, 0, '.');
+            VerticalLine right = new VerticalLine(0, 23, 78, '.');
+
+
+            left.Drow();
+            right.Drow();
         }
     }
 }
