@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
+
 namespace Snake
 {
     class Program
@@ -24,10 +25,6 @@ namespace Snake
 
         static void doWork()
         {
-            //Console.WriteLine(Console.LargestWindowHeight);
-            //Console.WriteLine(Console.LargestWindowWidth);
-            //Console.SetWindowPosition(50, 0);
-            //Console.SetBufferSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
             Console.SetWindowSize(80, 25);
             Console.SetBufferSize(80, 25);
 
@@ -43,25 +40,21 @@ namespace Snake
 
             Point snakeTail = new Point(10, 4, '*');
 
-            Snake snake = new Snake(snakeTail, 3, Direction.Right);
+            Snake snake = new Snake(snakeTail, 10, Direction.Right);
             snake.Drow();
 
-            snake.Move(Direction.Right);
-            Thread.Sleep(300);
-            snake.Move(Direction.Right);
-            Thread.Sleep(300);
-            snake.Move(Direction.Right);
-            Thread.Sleep(300);
-            snake.Move(Direction.Right);
-            Thread.Sleep(300);
-            snake.Move(Direction.Down);
-            Thread.Sleep(300);
-            snake.Move(Direction.Down);
-            Thread.Sleep(300);
-            snake.Move(Direction.Right);
-            Thread.Sleep(300);
-            snake.Move(Direction.Right);
-            Thread.Sleep(300);
+
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo pressedKey = Console.ReadKey(true);
+                    snake.handleKey(pressedKey.Key);
+                }
+                snake.Move();
+                Thread.Sleep(100);
+            }
+
         }
     }
 }
